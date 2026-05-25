@@ -792,7 +792,6 @@ function LeadForm() {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-
   const validate = () => {
     const e = {};
     if (!form.name.trim()) e.name = "Required";
@@ -806,13 +805,39 @@ function LeadForm() {
     setForm((f) => ({ ...f, [k]: v }));
     setErrors((er) => ({ ...er, [k]: undefined }));
   };
-  const submit = (ev) => {
+
+  const submit = async (ev) => {
     ev.preventDefault();
-    const e = validate();
-    if (Object.keys(e).length) { setErrors(e); return; }
+
     setSubmitting(true);
-    setTimeout(() => { setSubmitting(false); setSubmitted(true); }, 900);
-  };
+
+    try {
+      const response = await fetch(
+        "https://formspree.io/f/xdajwzgy",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed");
+      }
+
+      setSubmitted(true);
+    }
+    catch (err) {
+      console.error(err);
+      alert("Unable to submit report request.");
+    }
+    finally {
+      setSubmitting(false);
+    }
+  };  
 
   const includes = [
     { t: "Top 5 themes hurting your rating", s: "Pulled from every public review in the last 12 months." },
@@ -874,7 +899,7 @@ function LeadForm() {
               <div className="row">
                 <div className={"field" + (errors.company ? " err" : "")}>
                   <label htmlFor="company">Company</label>
-                  <input id="company" value={form.company} onChange={handleChange("company")} placeholder="Bright Smile Group" />
+                  <input id="company" value={form.company} onChange={handleChange("company")} placeholder="Your Company Name" />
                   {errors.company && <span className="err-msg">{errors.company}</span>}
                 </div>
                 <div className="field">
@@ -896,7 +921,7 @@ function LeadForm() {
                 </div>
                 <div className="field">
                   <label htmlFor="url">Public URL (Google / Yelp)</label>
-                  <input id="url" value={form.url} onChange={handleChange("url")} placeholder="g.page/brightsmile" />
+                  <input id="url" value={form.url} onChange={handleChange("url")} placeholder="Website URL" />
                 </div>
               </div>
               <div className="field">
