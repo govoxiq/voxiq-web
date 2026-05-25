@@ -809,6 +809,9 @@ function LeadForm() {
   const submit = async (ev) => {
     ev.preventDefault();
 
+    const e = validate();
+    if (Object.keys(e).length) { setErrors(e); return; }
+
     setSubmitting(true);
 
     try {
