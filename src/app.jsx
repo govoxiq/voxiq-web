@@ -714,7 +714,7 @@ function ReportSnippet() {
           <div className="report-head">
             <div className="left">
               <span className="crumb">VoxIQ · Review Intelligence Report</span>
-              <div className="title">At a glance — <em style={{ fontStyle: "normal", color: "var(--muted)" }}>[Your Practice]</em></div>
+              <div className="title">At a glance — <em style={{ fontStyle: "normal", color: "var(--muted)" }}>[Your Company]</em></div>
             </div>
             <span className="report-stamp mono">SAMPLE</span>
           </div>
@@ -843,10 +843,10 @@ function LeadForm() {
   };  
 
   const includes = [
-    { t: "Top 5 themes hurting your rating", s: "Pulled from every public review in the last 12 months." },
-    { t: "Competitor benchmark", s: "Three nearest competitors, scored on the same dimensions." },
-    { t: "Ranked action list", s: "Each action with effort, owner, and expected lift." },
-    { t: "A 30-minute walkthrough", s: "Live with our team — no pitch deck, just your data." },
+    { t: "Reputation signal review", s: "We identify the themes appearing most often in your customer feedback." },
+    { t: "Industry context", s: "See how your customer experience compares to common patterns in your category." },
+    { t: "Opportunity assessment", s: "Understand where VoxIQ believes operational improvements may exist." },
+    { t: "Pilot recommendation", s: "If there's a fit, we'll recommend next steps for a deeper engagement." },
   ];
 
   return (
@@ -855,11 +855,9 @@ function LeadForm() {
         <div className="lead-wrap">
           <div className="lead-copy">
             <span className="eyebrow">Free · 7-day turnaround</span>
-            <h2>Get a free <span className="accent">Review Intelligence Report</span>.</h2>
+            <h2>Request a VoxIQ pilot <span className="accent">assessment.</span></h2>
             <p>
-              Tell us where you operate. We'll pull your public reviews, run them
-              through VoxIQ, and send back a full Review Intelligence Report —
-              free, no obligation, no sales call required.
+              Share your business and public review profile. We'll review whether VoxIQ can identify enough signal to produce a useful operational assessment.
             </p>
             <div className="lead-includes">
               {includes.map((i) => (
@@ -878,12 +876,7 @@ function LeadForm() {
             <div className="form-success">
               <div className="check"><Check size={20} /></div>
               <h3>Report queued for {form.company || "you"}.</h3>
-              <p>We've sent a confirmation to <strong>{form.email}</strong>. We'll reach out within one business day to confirm a few details — then the report follows within seven days.</p>
-              <div className="next-steps">
-                <div className="ns"><span className="dot mono">01</span> We pull every public review of your business in the last 12 months.</div>
-                <div className="ns"><span className="dot mono">02</span> Our model clusters them into the themes that run your category.</div>
-                <div className="ns"><span className="dot mono">03</span> You get a PDF and a 30-minute walkthrough.</div>
-              </div>
+              <p>We've sent a confirmation to <strong>{form.email}</strong>. Thanks. We'll review your submission and follow up if there's a fit for the early access pilot.</p>
             </div>
           ) : (
             <form className="form" onSubmit={submit} noValidate>
@@ -940,7 +933,7 @@ function LeadForm() {
               {errors.consent && <span className="err-msg">{errors.consent}</span>}
               <div className="submit-row">
                 <button type="submit" className="btn btn-accent" disabled={submitting}>
-                  {submitting ? "Queuing…" : <>Send my free report <Arrow /></>}
+                  {submitting ? "Queuing…" : <>Request an assessment <Arrow /></>}
                 </button>
                 <div className="privacy">7-day turnaround · We never contact your customers · Report yours to keep.</div>
               </div>
