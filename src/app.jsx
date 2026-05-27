@@ -47,7 +47,7 @@ function Nav() {
           <a href="#what">What we do</a>
           <a href="#industries">Industries</a>
           <a href="#snippet">Sample report</a>
-          <a href="#report">Free report</a>
+          <a href="#report">Pilot report</a>
         </nav>
         <div className="nav-cta">
           <a href="#report" className="btn btn-primary">Get a free report <Arrow /></a>
