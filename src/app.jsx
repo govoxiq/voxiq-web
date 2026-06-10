@@ -50,7 +50,7 @@ function Nav() {
           <a href="#report">Pilot report</a>
         </nav>
         <div className="nav-cta">
-          <a href="#report" className="btn btn-primary">Get a free report <Arrow /></a>
+          <a href="#report" className="btn btn-primary">Get your report <Arrow /></a>
         </div>
       </div>
     </header>
@@ -99,7 +99,7 @@ function Hero({ headline }) {
               monitoring. The complete loop.
             </p>
             <div className="hero-cta">
-              <a href="#report" className="btn btn-accent">Get a free review intelligence report <Arrow /></a>
+              <a href="#report" className="btn btn-accent">Request for an intelligence report <Arrow /></a>
               <a href="#what" className="btn btn-ghost">See how it works</a>
             </div>
             <div className="hero-meta">
